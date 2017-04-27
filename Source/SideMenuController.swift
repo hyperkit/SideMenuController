@@ -296,9 +296,10 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         controller.view.frame = centerPanel.bounds
     }
     
-    func prepare(sidePanelForDisplay display: Bool){
-        
+    func prepare(sidePanelForDisplay display: Bool) {
         sidePanel.isHidden = !display
+
+        display ? delegate?.sideMenuControllerWillReveal?(self) : delegate?.sideMenuControllerWillHide?(self)
         
         if !sidePanelPosition.isPositionedUnder {
             if display && centerPanelOverlay.superview == nil {
