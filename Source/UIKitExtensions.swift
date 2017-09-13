@@ -61,10 +61,15 @@ public extension UINavigationController {
         var items: [UIBarButtonItem] = (positionLeft ? self.topViewController?.navigationItem.leftBarButtonItems :
             self.topViewController?.navigationItem.rightBarButtonItems) ?? []
 
-        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
-        spacer.width = -10
-        
-        items.append(contentsOf: positionLeft ? [spacer, button] : [button, spacer])
+        if items.count > 0 {
+            let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+            spacer.width = -10
+
+            items.append(contentsOf: positionLeft ? [spacer, button] : [button, spacer])
+        } else {
+            items.append(button)
+        }
+
         return items
     }
 }
