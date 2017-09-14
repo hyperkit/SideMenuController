@@ -43,7 +43,7 @@ public extension UINavigationController {
             return
         }
 
-        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(SideMenuController.toggle))
+        let button = UIBarButtonItem(image: image, style: .plain, target: sideMenuController, action: #selector(SideMenuController.toggle))
         
         if SideMenuController.preferences.drawing.sidePanelPosition.isPositionedLeft {
             let newItems = computeNewItems(sideMenuController: sideMenuController, button: button, controller: self.topViewController, positionLeft: true)
