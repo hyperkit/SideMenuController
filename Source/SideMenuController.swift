@@ -276,7 +276,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         
-        sbw?.set(hidden, withBehaviour: _preferences.animating.statusBarBehaviour)
+        sbw?.set(hidden, withBehaviour: _preferences.animating.statusBarBehaviour, isPortrait: UIApplication.shared.statusBarOrientation.isPortrait)
         
         if _preferences.animating.statusBarBehaviour == StatusBarBehaviour.horizontalPan {
             if !hidden {

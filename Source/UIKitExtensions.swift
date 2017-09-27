@@ -75,7 +75,7 @@ public extension UINavigationController {
 }
 
 extension UIWindow {
-    func set(_ hidden: Bool, withBehaviour behaviour: SideMenuController.StatusBarBehaviour) {
+    func set(_ hidden: Bool, withBehaviour behaviour: SideMenuController.StatusBarBehaviour, isPortrait portrait: Bool) {
         let animations: () -> ()
         
         switch behaviour {
@@ -85,7 +85,7 @@ extension UIWindow {
             }
         case .slideAnimation:
             animations = {
-                self.transform = hidden ? CGAffineTransform(translationX: 0, y: -1 * DefaultStatusBarHeight) : CGAffineTransform.identity
+                self.transform = hidden && portrait ? CGAffineTransform(translationX: 0, y: -1 * DefaultStatusBarHeight) : CGAffineTransform.identity
             }
         default:
             return
